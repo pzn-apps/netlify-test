@@ -1,0 +1,5 @@
+npm i node
+npm i nodemon
+npm i octokit 
+npm i express-handlebars
+npm i dotenv
