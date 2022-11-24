@@ -7,7 +7,9 @@
     "site-mockup-sergey": "views/api.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/.bin/netlify-lambda serve api.js",
+    "build": "./node_modules/.bin/netlify-lambda build api.js"
   },
   "repository": {
     "type": "git",
@@ -23,9 +25,12 @@
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
     "express-handlebars": "^6.0.6",
+    "netlify-lambda": "^2.0.15",
     "node": "^19.1.0",
     "octokit": "^2.0.10",
     "on-finished": "^2.4.1",
+    "punch": "^0.5.46",
+    "serverless-http": "^3.1.0",
     "showdown": "^2.1.0"
   },
   "devDependencies": {

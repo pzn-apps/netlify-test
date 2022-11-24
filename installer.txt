@@ -3,3 +3,4 @@ npm i nodemon
 npm i octokit 
 npm i express-handlebars
 npm i dotenv
+npm i netlify-lambda

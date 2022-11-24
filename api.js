@@ -5,10 +5,24 @@ const linkToEngRepo = "/repos/pzn-apps/pzn-apps-content/contents/en/"
 const endOfMdFile = "?ref=main";
 const express = require('express');
 const app = express();
+const serverless = require('serverless-http');
 
 const octokit = new Octokit({
     auth: process.env.API_KEY,
 })
+const router = express.Router();
+router.get('/', (req, res) => {
+    res.json({
+        'hello': 'hi',
+    })
+})
+
+app.use('/.netlify/functions/api', router)
+
+module.exports.handler = serverless(app)
+
+
+
 
 const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps-content/contents/en/word-document-auto-fill/"
 let wordAutoFillContent = [];
@@ -64,7 +78,6 @@ const changeImgLinks = (text) => {
 
         if (straightLine) {
             text = text.replaceAll(straightLine, 'alt text')
-            console.log(straightLine)
         }
 
 
@@ -109,7 +122,6 @@ const getContent = async (projectName, item, length, projectArray) => {
         if (projectName.includes("task-base/")) {
             taskBaseContent = addToWordArr(responseData, projectArray, index)
         }
-        // console.log(taskBaseContent)
     }
     for (let i = 0; i < length; i++) {
 
@@ -136,6 +148,7 @@ const handlebars = expressHandleBars.create({
 app.engine('hbs', handlebars.engine)
 
 // view engine - шаблонизатор,hbs - расширение файла
+app.set('views', './dist/views')
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
@@ -144,8 +157,8 @@ app.get('/', (req, res) => {
 
 
 
-app.use(express.static(__dirname + '/views/'));
-
+app.use(express.static(__dirname + '/dist/views'));
+console.log(__dirname + '../dist/views')
 app.listen(5050)
 
 const dataArr = [];
