@@ -157,8 +157,8 @@ app.get('/', (req, res) => {
 
 
 
-app.use(express.static(__dirname + '/dist/views'));
-console.log(__dirname + '../dist/views')
+app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/dist/views'));
+console.log('..' + __dirname + '/dist/views')
 app.listen(5050)
 
 const dataArr = [];
