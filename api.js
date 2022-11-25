@@ -158,7 +158,7 @@ app.get('/', (req, res) => {
 
 
 app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/views'));
-// app.listen(5050)
+app.listen(5050)
 
 const dataArr = [];
 const introMdArray = [];
