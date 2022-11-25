@@ -158,7 +158,8 @@ app.get('/', (req, res) => {
 
 
 app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/views'));
-app.listen(5050)
+port = process.env.PORT || 80
+app.listen(port)
 
 const dataArr = [];
 const introMdArray = [];
