@@ -8,7 +8,7 @@ const app = express();
 const serverless = require('serverless-http');
 
 const octokit = new Octokit({
-    auth: "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",
+    auth: "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",
 })
 // const router = express.Router();
 // router.get('/', (req, res) => {
