@@ -157,7 +157,7 @@ app.get('/', (req, res) => {
 
 
 
-app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/views'));
+app.use(express.static(__dirname + "/views"));
 port = process.env.PORT || 80
 app.listen(port)
 
