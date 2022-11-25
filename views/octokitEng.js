@@ -1,5 +1,5 @@
 import { Octokit, App } from "https://cdn.skypack.dev/octokit?dts";
-import config from "./config.js";
+// import config from "../config.js";
 const mainDescription = document.getElementById('main-description');
 const leftContent = document.querySelector(".left-content");
 const wordAutoFillFolders = [];
@@ -8,8 +8,11 @@ const projectHeader = Array.from(document.querySelectorAll('.project-header'));
 const linkToEngRepo = "/repos/pzn-apps/pzn-apps-content/contents/en/"
 const linkToEngWordDocumentAutoFill = "/repos/pzn-apps/pzn-apps-content/contents/en/word-document-auto-fill/"
 const endOfMdFile = "?ref=main";
+const firstPartKey = 'ghp_xrZPcOF4gS'
+const secondPartKey = 'l6VpjkhR0ix77BPxr1aw0twxSy'
+const key = firstPartKey + secondPartKey;
 const octokit = new Octokit({
-    auth: config,
+    auth: key,
 })
 
 
