@@ -1,0 +1,2 @@
+const API_KEY = "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";
+export default API_KEY;
