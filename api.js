@@ -10,16 +10,16 @@ const serverless = require('serverless-http');
 const octokit = new Octokit({
     auth: process.env.API_KEY,
 })
-const router = express.Router();
-router.get('/', (req, res) => {
-    res.json({
-        'hello': 'hi',
-    })
-})
+// const router = express.Router();
+// router.get('/', (req, res) => {
+//     res.json({
+//         'hello': 'hi',
+//     })
+// })
 
-app.use('/.netlify/functions/api', router)
+// app.use('/', router)
 
-module.exports.handler = serverless(app)
+// module.exports.handler = serverless(app)
 
 
 
@@ -148,7 +148,7 @@ const handlebars = expressHandleBars.create({
 app.engine('hbs', handlebars.engine)
 
 // view engine - шаблонизатор,hbs - расширение файла
-app.set('views', './dist/views')
+// app.set('views', 'views')
 app.set('view engine', 'hbs')
 
 app.get('/', (req, res) => {
@@ -157,9 +157,8 @@ app.get('/', (req, res) => {
 
 
 
-app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/dist/views'));
-console.log('..' + __dirname + '/dist/views')
-app.listen(5050)
+app.use(express.static('/Users/nikit/Dropbox/Mac/Desktop/myWork/ongoing projects/alex github main copy/views'));
+// app.listen(5050)
 
 const dataArr = [];
 const introMdArray = [];
