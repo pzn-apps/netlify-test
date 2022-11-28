@@ -2,7 +2,7 @@
 ///  console.log( convertObsidianLinks( source, 'https://github.com/pzn-apps/pzn-apps.github.io/blob/main/img/', true ) )
 /////
 
-function convertObsidianLinks( text, imagePath, removePathFromLinks ){
+export function convertObsidianLinks( text, imagePath, removePathFromLinks ){
     let result = convertObsidianImageLinks( text, imagePath )
 
     let links = result.match(/(?<=\[\[)(.*?)(?=\]\])/g)
