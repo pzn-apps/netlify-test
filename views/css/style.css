@@ -1,138 +1,129 @@
 html {
-    font-family: 'Poppins', sans-serif;
-    color: black;
+  font-family: "Poppins", sans-serif;
+  color: black;
 }
 
 header {
-    display: flex;
-    max-width: 1440px;
-    justify-content: space-between;
-    margin: 20px auto 0;
-    align-items: center;
-    padding: 0 0 0 30px;
+  display: flex;
+  max-width: 1440px;
+  justify-content: space-between;
+  margin: 20px auto 0;
+  align-items: center;
+  padding: 0 0 0 30px;
 }
 
 .directory-path {
-    color: black;
-
+  color: black;
 }
 
 .search-header {
-    width: 150px;
+  width: 150px;
 }
 
 .search-input {
-    width: 100%;
-    height: 35px;
-    border: 1px solid black;
+  width: 100%;
+  height: 35px;
+  border: 1px solid black;
 }
 
 .search-input::placeholder {
-    font-family: 'Poppins', sans-serif;
-    font-weight: 800;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
 }
 
 a {
-    text-decoration: none;
-    color: black;
-
+  text-decoration: none;
+  color: black;
 }
 
 .switch-lang a {
-    color: black;
-    text-decoration: underline;
+  color: black;
+  text-decoration: underline;
 }
 
 .project {
-    display: flex;
-    width: 700px;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  width: 700px;
+  align-items: center;
+  gap: 20px;
 }
 
 .project-header {
-    background-color: rgb(207, 207, 207);
-    color: black;
-    padding: 5px;
-    display: flex;
-    border: 1px black solid;
-    border-radius: 10px;
-    align-items: center;
-    transition: all 0.3s;
+  background-color: rgb(207, 207, 207);
+  color: black;
+  padding: 5px;
+  display: flex;
+  border: 1px black solid;
+  border-radius: 10px;
+  align-items: center;
+  transition: all 0.3s;
 }
 
-
-
 .project img {
-
-    height: 50px;
-    width: 50px;
+  height: 50px;
+  width: 50px;
 }
 
 .switch-lang {
-    margin-right: 50px;
+  margin-right: 50px;
 }
 
 /* content section */
 .content {
-    width: 1400px;
-    margin: 0 auto;
-    display: flex;
-
+  width: 1400px;
+  margin: 0 auto;
+  display: flex;
 }
 
 .left-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    width: 300px;
-    min-height: 80vh;
-    border-left: 1px black solid;
-    border-right: 1px black solid;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  width: 300px;
+  min-height: 80vh;
+  border-left: 1px black solid;
+  border-right: 1px black solid;
 }
 
 .left-content-subfolder {
-    padding-top: 10px;
-    width: 80%;
-    color: black;
-    font-size: 17px;
+  padding-top: 10px;
+  width: 80%;
+  color: black;
+  font-size: 17px;
 }
 
 a.left-content-subfolder:hover {
-    cursor: pointer;
-    color: rgb(202, 198, 198);
+  cursor: pointer;
+  color: rgb(202, 198, 198);
 }
 
-
 .left-content-suba {
-    margin-top: 5px;
-    color: black;
-    position: relative;
-    left: 20px;
+  margin-top: 5px;
+  color: black;
+  position: relative;
+  left: 20px;
 }
 
 .left-content-suba:hover {
-    cursor: pointer;
-
+  cursor: pointer;
 }
 
 /*right-content*/
 .right-content {
-    width: 1000px;
-    margin: 20px auto;
+  width: 1000px;
+  margin: 20px auto;
 }
 
 .right-content img {
-
-    width: auto;
-    height: 300px;
+  width: auto;
+  height: 300px;
 }
 
 datalist {
-    list-style-type: none;
+  list-style-type: none;
 }
 
 input::-webkit-calendar-picker-indicator {
-    opacity: 0;
+  opacity: 0;
 }
