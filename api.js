@@ -10,16 +10,8 @@ const serverless = require('serverless-http');
 const octokit = new Octokit({
     auth: process.env.API_KEY,
 })
-// const router = express.Router();
-// router.get('/', (req, res) => {
-//     res.json({
-//         'hello': 'hi',
-//     })
-// })
 
-// app.use('/', router)
 
-// module.exports.handler = serverless(app)
 
 
 
@@ -30,9 +22,6 @@ let wordAutoFillContent = [];
 const linkToTaskBase = "/repos/pzn-apps/pzn-apps-content/contents/en/task-base/"
 let taskBaseContent = [];
 const taskBaseFolders = [];
-
-
-// const wordAutoFillRender = []
 let wordAutoFillRouteRender = []
 
 
@@ -47,50 +36,54 @@ let wordAutoFillRouteRender = []
 //     addToWordArr(introResponse, introMdArray, 0)
 // }
 // getIntroMd()
-function convertObsidianLinks(text) {
-    let result = text
+function convertObsidianLinks(text, imagePath, removePathFromLinks) {
+    let result = convertObsidianImageLinks(text, imagePath)
 
     let links = result.match(/(?<=\[\[)(.*?)(?=\]\])/g)
     if (links) {
-        let images = result.match(/(?<=!\[\[)(.*?)(?=\]\])/g)
         links.map(link => {
-            if (images.find(el => { return el === link })) return
             let parts = link.split('|')
             if (!parts[0]) return
-            if (!parts[1]) parts[1] = parts[0].split('/').pop()
+            let label = (parts[1] || parts[0].split('/').pop())
+            let filename = removePathFromLinks ? parts[0].split('/').pop() : parts[0]
 
             result = result.replace(
                 '[[' + link + ']]',
-                '[' + parts[1].replace(/\/.*\//g, '') + '](' + parts[0].replace(new RegExp(' ', 'g'), '').replace(/'/g, '').replace(/.*\//g, '') + ')'
+                '[' + label + '](' + filename.replace(new RegExp(' ', 'g'), '') + ')'
             )
         })
-        return result
     }
 
+    return result
 }
-// let fixedText = removeLinks.replaceAll("![[pzn-apps/img", `![alt text](https://github.com/pzn-apps/pzn-apps-content/blob/main/img`)
-//     let endFixedText = fixedText.replaceAll("]]", "?raw=true)");
-const changeImgLinks = (text) => {
-    if (text) {
-        let result = text.match(/(\!\[\[pzn-apps\/img)(.*?)(\]\])/g)
-        if (result) text = text.replaceAll(/\!\[\[pzn-apps\/img/g, 'an image')
-        let straightLine = text.match(/\|\d.*\]\]/)
 
-        if (straightLine) {
-            text = text.replaceAll(straightLine, 'alt text')
-        }
+function convertObsidianImageLinks(text, path) {
+    const labelSubstitute = 'unknown'
+    let result = text
+    let images = result.match(/(?<=!\[\[)(.*?)(?=\]\])/g)
+    if (images) {
+        images.map(image => {
+            let parts = image.split('|')
+            if (!parts[0]) return
 
+            let label = (parts[1] || labelSubstitute)
+            let filename = parts[0].replace(/\\/g, "/").split('/').pop()
 
-        // let result = text.replace("![[pzn-apps/img", `![alt text](https://github.com/pzn-apps/pzn-apps-content/blob/main/img`)
-        return text
+            result = result.replace(
+                '![[' + image + ']]',
+                '![' + label + '](' + path + filename + "?raw=true)"
+            )
+        })
     }
 
+    return result
 }
-const addToWordArr = (response, array, index) => {
+
+addToWordArr = (response, array, index) => {
 
     let uncodedRepository = atob(response.data.content)
-    let removeLinks = convertObsidianLinks(uncodedRepository)
-    removeLinks = changeImgLinks(removeLinks)
+    let removeLinks = convertObsidianLinks(uncodedRepository, 'https://github.com/pzn-apps/pzn-apps-content/blob/main/img/', true)
+    // removeLinks = changeImgLinks(removeLinks)
     // if (removeLinks) {
     //     let addImg = changeImgLinks(removeLinks)
     //     if (addImg) 
