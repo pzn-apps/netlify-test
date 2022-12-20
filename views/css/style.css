@@ -2,10 +2,11 @@ html {
   font-family: "Poppins", sans-serif;
   color: black;
 }
-
+body {
+}
 header {
   display: flex;
-  max-width: 1440px;
+  max-width: 100%;
   justify-content: space-between;
   margin: 20px auto 0;
   align-items: center;
@@ -43,7 +44,7 @@ a {
 
 .project {
   display: flex;
-  width: 700px;
+  max-width: 50%;
   align-items: center;
   gap: 20px;
 }
@@ -70,7 +71,7 @@ a {
 
 /* content section */
 .content {
-  width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
   display: flex;
 }
@@ -87,8 +88,9 @@ a {
 }
 
 .left-content-subfolder {
-  padding-top: 10px;
-  width: 80%;
+  margin: 0px 10px;
+  padding: 10px;
+  width: 300px;
   color: black;
   font-size: 17px;
 }
@@ -111,8 +113,8 @@ a.left-content-subfolder:hover {
 
 /*right-content*/
 .right-content {
-  width: 1000px;
-  margin: 20px auto;
+  max-width: 100%;
+  margin: 20px 5%;
 }
 
 .right-content img {
